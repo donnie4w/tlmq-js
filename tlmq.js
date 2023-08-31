@@ -261,11 +261,11 @@ function pubjson(topic,msg){
 }
 
 
-var mc = new mqCli("ws://localhost:5100", "mymq=123");
-mc.PubJsonHandler = function (data) { console.log("pubjson data>>>" + data); };
-mc.PubMemHandler = function (data) { console.log("pubmem data>>>" + data); };
-mc.connect();
-setTimeout("mc.sub('111')", 4000);
-setTimeout("mc.pubJson('111','hello js pubjson')", 4000);
-setTimeout("mc.pubMem('111','hello js pubmem')", 4000);
-setInterval("mc.ping()", 4000);
+// var mc = new mqCli("ws://localhost:5100", "mymq=123");
+// mc.PubJsonHandler = function (data) { console.log("pubjson data>>>" + data); };
+// mc.PubMemHandler = function (data) { console.log("pubmem data>>>" + data); };
+// mc.connect();
+// setTimeout("mc.sub('111')", 4000);
+// setTimeout("mc.pubJson('111','hello js pubjson')", 4000);
+// setTimeout("mc.pubMem('111','hello js pubmem')", 4000);
+// setInterval("mc.ping()", 4000);
