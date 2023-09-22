@@ -154,21 +154,15 @@ class mqCli {
 
     sub(topic) {
         this.submap[topic] = 0;
-        this.send(STAT.MQ_SUB, topic);
+        this.send(STAT.MQ_SUB|0x80, topic);
     }
 
-
-    sub(topic) {
-        this.submap[topic] = 0;
-        this.send(STAT.MQ_SUB, topic);
+    pubJson(topic, msg) {
+        this.send(STAT.MQ_PUBJSON, pubjson(topic, msg));
     }
 
-    pubJson(topic,msg) {
-        this.send(STAT.MQ_PUBJSON, pubjson(topic,msg));
-    }
-
-    pubMem(topic,msg) {
-        this.send(STAT.MQ_PUBMEM, pubjson(topic,msg));
+    pubMem(topic, msg) {
+        this.send(STAT.MQ_PUBMEM, pubjson(topic, msg));
     }
 
 }
@@ -256,10 +250,9 @@ function encodeUTF8(str) {
     return uint8Array.subarray(0, offset);
 }
 
-function pubjson(topic,msg){
-    return JSON.stringify({"Topic":topic,"Msg":msg,"Id":0})
+function pubjson(topic, msg) {
+    return JSON.stringify({ "Topic": topic, "Msg": msg, "Id": 0 })
 }
-
 
 // var mc = new mqCli("ws://localhost:5100", "mymq=123");
 // mc.PubJsonHandler = function (data) { console.log("pubjson data>>>" + data); };
